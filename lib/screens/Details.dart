@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/models/forecastModel.dart';
 import 'package:flutter_app/models/weatherModels.dart';
 import 'package:flutter_app/services/WeatherService.dart';
+import 'package:flutter_app/widget/DayCard.dart';
 import 'package:flutter_app/widget/SearchCard.dart';
 import '../styles/AppStyle.dart';
 import 'package:intl/intl.dart';
@@ -88,54 +89,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
               itemCount: showDays.length,
               itemBuilder: (ctx, i) {
                 final day = showDays[i];
-                final date = DateTime.parse(day['date'] as String);
-                final weekday = DateFormat('EEEE').format(date);
-                final iconCode = day['icon'] as String;
-                final minT = day['min'] as double;
-                final maxT = day['max'] as double;
-
-                return Card(
-                  color: AppTheme.secondary,
-                  margin: EdgeInsets.only(bottom: 16),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Container(
-                    padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-                    child: Row(
-                      children: [
-                        Image.network(
-                          'http://openweathermap.org/img/wn/$iconCode@2x.png',
-                          width: 40,
-                          height: 40,
-                        ),
-
-                        SizedBox(width: 16),
-
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                weekday,
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                              SizedBox(height: 4),
-                              Text(
-                                'High: ${maxT.toStringAsFixed(0)}°  Low: ${minT.toStringAsFixed(0)}°',
-                                style: TextStyle(color: Colors.white70),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                );
+                return DayCard(day: day);
               },
             ),
           ],
