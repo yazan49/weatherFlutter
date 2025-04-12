@@ -44,6 +44,7 @@ class _SearchScreenState extends State<SearchScreen> {
         Scaffold(
           backgroundColor: AppTheme.background,
           appBar: AppBar(
+            iconTheme: IconThemeData(color: Colors.white),
             title: Text(
               'Enter city name',
               style: TextStyle(color: Colors.white),

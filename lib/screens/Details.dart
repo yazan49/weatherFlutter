@@ -59,6 +59,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
 
     return Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.white),
         title: Text(
           '${weather.cityName} Weather',
           style: TextStyle(color: Colors.white),
